@@ -1,0 +1,42 @@
+# JetBrains Rider
+.idea/
+
+# Microsoft Visual Studio for Mac
+.vscode/
+
+# VS for Mac configuration folder
+.vscode/
+
+# Tye files
+.tye/
+
+# Local DB files
+*.mdf
+*.ldf
+
+# IIS Express
+iisexpress/
+
+# ASP.NET Core generated files
+wwwroot/
+
+# Log files
+*.log
+
+# Database files
+*.sqlite
+*.db
+
+# Resharper files
+.idea/
+
+# User settings for Visual Studio Code
+.vscode/
+
+# Other
+.vs
+.env
+
+# Build Folders
+/bin
+/obj
