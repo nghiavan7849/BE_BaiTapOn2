@@ -1,4 +1,5 @@
 ﻿using AutoMapper;
+using BCrypt.Net;
 using BE_BTO2_Demo.DTOs.Request;
 using BE_BTO2_Demo.DTOs.Response;
 using BE_BTO2_Demo.Mappers;
@@ -65,8 +66,10 @@ namespace BE_BTO2_Demo.Services
         {
             var role = await _roleRepository.GetRoleById(request.RoleId);
             if (role == null) return ApiResponse<UserResponse>.NotFound($"Role có id {request.RoleId} không tồn tại!!!");
+            var userRequets = _mapper.Map<User>(request);
+            userRequets.Password = BCrypt.Net.BCrypt.HashPassword(request.Password);
 
-            var user = await _userRepository.CreateUser(_mapper.Map<User>(request));
+            var user = await _userRepository.CreateUser(userRequets);
             return ApiResponse<UserResponse>.Success(_mapper.Map<UserResponse>(user));
         }
 
@@ -78,6 +81,7 @@ namespace BE_BTO2_Demo.Services
             var user = await _userRepository.GetById(id);
             if (user == null) return ApiResponse<UserResponse>.NotFound($"User có id {id} không tồn tại!!!");
             _mapper.Map(request, user);
+            user.Password = BCrypt.Net.BCrypt.HashPassword(request.Password);
             var update = await _userRepository.UpdateUser(user);
             return ApiResponse<UserResponse>.Success(_mapper.Map<UserResponse>(update));
         }
