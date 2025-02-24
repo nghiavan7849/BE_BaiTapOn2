@@ -12,7 +12,7 @@ using Npgsql.EntityFrameworkCore.PostgreSQL.Metadata;
 namespace BE_BTO2_Demo.Migrations
 {
     [DbContext(typeof(MyDBContext))]
-    [Migration("20250223100852_AddDatabase")]
+    [Migration("20250224102906_AddDatabase")]
     partial class AddDatabase
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)

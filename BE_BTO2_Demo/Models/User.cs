@@ -1,4 +1,6 @@
-﻿namespace BE_BTO2_Demo.Models
+﻿using System.Text.Json.Serialization;
+
+namespace BE_BTO2_Demo.Models
 {
     public class User
     {
@@ -9,6 +11,7 @@
         public string? HomeAddress { get; set; }
 
         public int RoleId { get; set; }
+        [JsonIgnore]
         public Role Role { get; set; }
     }
 }

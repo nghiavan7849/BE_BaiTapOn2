@@ -11,10 +11,12 @@ namespace BE_BTO2_Demo.Services
     public class UserService : IUserService
     {
         private readonly IUserRepository _userRepository;
+        private readonly IRoleRepository _roleRepository;
         private readonly IMapper _mapper;
-        public UserService(IUserRepository userRepository, IMapper mapper) 
+        public UserService(IUserRepository userRepository, IRoleRepository roleRepository, IMapper mapper) 
         { 
             _userRepository = userRepository;
+            _roleRepository = roleRepository;
             _mapper = mapper;
         }
 
@@ -61,15 +63,20 @@ namespace BE_BTO2_Demo.Services
 
         public async Task<ApiResponse<UserResponse>> CreateUser(UserRequest request)
         {
+            var role = await _roleRepository.GetRoleById(request.RoleId);
+            if (role == null) return ApiResponse<UserResponse>.NotFound($"Role có id {request.RoleId} không tồn tại!!!");
+
             var user = await _userRepository.CreateUser(_mapper.Map<User>(request));
             return ApiResponse<UserResponse>.Success(_mapper.Map<UserResponse>(user));
         }
 
         public async Task<ApiResponse<UserResponse>> UpdateUser(int id, UserRequest request)
         {
+            var role = await _roleRepository.GetRoleById(request.RoleId);
+            if (role == null) return ApiResponse<UserResponse>.NotFound($"Role có id {request.RoleId} không tồn tại!!!");
 
             var user = await _userRepository.GetById(id);
-            if (user == null) return ApiResponse<UserResponse>.NotFound($"User có id {id} không tồn tại");
+            if (user == null) return ApiResponse<UserResponse>.NotFound($"User có id {id} không tồn tại!!!");
             _mapper.Map(request, user);
             var update = await _userRepository.UpdateUser(user);
             return ApiResponse<UserResponse>.Success(_mapper.Map<UserResponse>(update));
