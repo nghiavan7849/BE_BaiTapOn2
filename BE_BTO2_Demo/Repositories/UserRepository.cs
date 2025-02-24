@@ -45,5 +45,10 @@ namespace BE_BTO2_Demo.Repositories
             await _context.SaveChangesAsync();
             return true;
         }
+
+        public async Task<User?> GetUserByEmailAsync(string email)
+        {
+            return await _context.Users.Include(u => u.Role).FirstOrDefaultAsync(u => u.Email == email);
+        }
     }
 }

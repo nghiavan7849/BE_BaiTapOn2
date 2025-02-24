@@ -1,10 +1,12 @@
 ﻿using BE_BTO2_Demo.DTOs.Request;
 using BE_BTO2_Demo.DTOs.Response;
 using BE_BTO2_Demo.Services.Interfaces;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 
 namespace BE_BTO2_Demo.Controllers
 {
+    [Authorize]
     [ApiController]
     [Route("api/user")]
     public class UserController : ControllerBase
