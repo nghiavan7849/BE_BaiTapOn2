@@ -12,6 +12,7 @@ namespace BE_BTO2_Demo.DBContext
         public virtual DbSet<Intern> Interns { get; set; }
         public virtual DbSet<User> Users { get; set; }
         public virtual DbSet<Role> Roles { get; set; }
+        public virtual DbSet<AllowAccess> AllowAccess { get; set; }
 
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
