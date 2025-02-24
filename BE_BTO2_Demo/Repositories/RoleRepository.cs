@@ -21,27 +21,27 @@ namespace BE_BTO2_Demo.Repositories
             return await _context.Roles.FindAsync(id);
         }
 
-        public async Task<Role> CreateRole(Role Role)
+        public async Task<Role> CreateRole(Role role)
         {
-            await _context.Roles.AddAsync(Role);
+            await _context.Roles.AddAsync(role);
             await _context.SaveChangesAsync();
-            return Role;
+            return role;
         }
 
-        public async Task<Role> UpdateRole(Role Role)
+        public async Task<Role> UpdateRole(Role role)
         {
-            _context.Roles.Update(Role);
+            _context.Roles.Update(role);
             await _context.SaveChangesAsync();
-            return Role;
+            return role;
         }
 
 
         public async Task<bool> DeleteRole(int id)
         {
-            var Role = await GetRoleById(id);
-            if (Role == null) return false;
+            var role = await GetRoleById(id);
+            if (role == null) return false;
            
-            _context.Roles.Remove(Role);
+            _context.Roles.Remove(role);
             await _context.SaveChangesAsync();
             return true;
         }
