@@ -48,5 +48,16 @@
             };
         }
 
+        public static ApiResponse<T> Forbidden()
+        {
+            return new ApiResponse<T>
+            {
+                Code = 3,
+                Status = "error",
+                Data = default,
+                Description = "Không có quyền truy cập"
+            };
+        }
+
     }
 }

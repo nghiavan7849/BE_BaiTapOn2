@@ -24,10 +24,10 @@ namespace BE_BTO2_Demo.Services
             var jwt_expireMinutes = Environment.GetEnvironmentVariable("JWT_ExpireMinutes");
             var claims = new List<Claim>
             {
-                new Claim("use_id", user.UserId.ToString()),
-                new Claim("name", user.FullName ?? "NoFullname"),
-                new Claim("email", user.Email ?? "NoEmail"),
-                new Claim("role", user.Role.RoleName?? "NoRole")
+                new Claim(ClaimTypes.NameIdentifier, user.UserId.ToString()),
+                new Claim(ClaimTypes.Name, user.FullName ?? "NoFullname"),
+                new Claim(ClaimTypes.Email, user.Email ?? "NoEmail"),
+                new Claim(ClaimTypes.Role, user.Role.RoleName?? "NoRole")
             };
 
             var token = new JwtSecurityToken(
