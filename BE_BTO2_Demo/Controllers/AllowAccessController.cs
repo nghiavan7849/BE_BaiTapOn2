@@ -19,7 +19,8 @@ namespace BE_BTO2_Demo.Controllers
         }
 
         [HttpGet]
-        public async Task<IActionResult> GetAll(int pageSize = 10, int pageCurrent = 1, string? search = "", string? sortCollumn = "Id", string? sortOrder = "asc")
+        public async Task<IActionResult> GetAll(int pageSize = 10, int pageCurrent = 1, 
+            string? search = "", string? sortCollumn = "Id", string? sortOrder = "asc")
         {
             var response = await _allowAccessService.GetAllAllowAccess(pageSize, pageCurrent, search, sortCollumn, sortOrder);
             if(response.Code == 0) return Ok(response);

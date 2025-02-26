@@ -35,7 +35,6 @@ namespace BE_BTO2_Demo.Repositories
             return role;
         }
 
-
         public async Task<bool> DeleteRole(int id)
         {
             var role = await GetRoleById(id);
