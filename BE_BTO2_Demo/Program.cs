@@ -52,7 +52,7 @@ builder.Services.Configure<ApiBehaviorOptions>(options => {
 // Dang ky filter de xu ly loi validation
 builder.Services.AddControllers(options =>
 {
-    options.Filters.Add<ValidationFiller>();
+    options.Filters.Add<ValidationFilter>();
 });
 
 // Them dich vu xac thuc JWT

@@ -14,7 +14,6 @@ namespace BE_BTO2_Demo.DBContext
         public virtual DbSet<Role> Roles { get; set; }
         public virtual DbSet<AllowAccess> AllowAccess { get; set; }
 
-
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
             modelBuilder.Entity<User>()
@@ -28,7 +27,5 @@ namespace BE_BTO2_Demo.DBContext
                 .OnDelete(DeleteBehavior.Cascade);
 
         }
-
-
     }
 }

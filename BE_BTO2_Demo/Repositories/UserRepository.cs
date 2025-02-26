@@ -11,7 +11,6 @@ namespace BE_BTO2_Demo.Repositories
         public UserRepository(MyDBContext context) {
             _context = context;
         }
-
         public async Task<IEnumerable<User>> GetAllUser()
         {
             return await _context.Users.ToListAsync();
@@ -34,8 +33,6 @@ namespace BE_BTO2_Demo.Repositories
             await _context.SaveChangesAsync();
             return user;
         }
-
-
         public async Task<bool> DeleteUser(int id)
         {
             var user = await GetById(id);

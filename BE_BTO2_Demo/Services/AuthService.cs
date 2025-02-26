@@ -18,7 +18,8 @@ namespace BE_BTO2_Demo.Services
         public async Task<ApiResponse<string>> Login(LoginRequest request)
         {
             var user = await _userRepository.GetUserByEmailAsync(request.Email);
-            if (user == null || !BCrypt.Net.BCrypt.Verify(request.Password, user.Password)) return ApiResponse<string>.Error("Email hoặc mật khẩu không đúng!!!");
+            if (user == null || !BCrypt.Net.BCrypt.Verify(request.Password, user.Password)) 
+                return ApiResponse<string>.Error("Email hoặc mật khẩu không đúng!!!");
 
             var token = _jwtService.GenerateToken(user);
             return ApiResponse<string>.Success(token);

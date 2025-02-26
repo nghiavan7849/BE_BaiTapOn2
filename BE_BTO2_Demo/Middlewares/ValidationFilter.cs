@@ -4,8 +4,8 @@ using Microsoft.AspNetCore.Mvc.Filters;
 
 namespace BE_BTO2_Demo.Middlewares
 {
-    public class ValidationFiller : IActionFilter
-    {
+    public class ValidationFilter : IActionFilter
+    { 
         public void OnActionExecuted(ActionExecutedContext context)
         {
         }

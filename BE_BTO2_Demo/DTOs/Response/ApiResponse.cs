@@ -12,7 +12,9 @@
         public int? PageCurrent { get; set; }
          
 
-        public static ApiResponse<T> Success(T? data = default, string? description = null, int? pageTotal = null, int? pageSize = null, int? pageCurrent = null, int? total = null)
+        public static ApiResponse<T> Success(T? data = default, string? description = null, 
+                                                int? pageTotal = null, int? pageSize = null,
+                                                int? pageCurrent = null, int? total = null)
         {
             return new ApiResponse<T>
             {
